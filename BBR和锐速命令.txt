@@ -1,0 +1,22 @@
+安装命令？
+
+wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+
+wget -N --no-check-certificate "https://raw.githubusercontent.com/oldjth/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+
+
+wget -N --no-check-certificate "https://raw.githubusercontent.com/oldjth/chiakge-Linux-NetSpeed-master/blob/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+
+根据自己需求操作，重启后再使用./tcp.sh命令接着操作。
+
+
+重启VPS命令 reboot
+
+换到root sudo -i
+
+
+
+
+
+
+wget -N --no-check-certificate "https://raw.githubusercontent.com/oldjth/chiakge-Linux-NetSpeed-master/blob/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
