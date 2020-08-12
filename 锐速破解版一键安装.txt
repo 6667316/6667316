@@ -1,0 +1,108 @@
+适用平台：KVM/XEN 虚拟，不支持OpenVZ虚拟。
+
+适用系统：CentOS/Debian/Ubuntu。（部分内核可能会安装失败）。
+
+注意事项：
+
+1.根据站长的使用体验，锐速对Debian系统的支持比较好，大部分情况都能安装成功，推荐大家在Debian 8 或 Debian 7 系统上安装锐速。
+
+  在其它系统上安装失败的，也可以换成Debian系统尝试安装。
+
+2.同样是个人经验，建议锐速放在最后安装。如果你还要在系统上安装其它各种一键包，比如一键SS、一键SSR等，强烈建议顺序排在锐速前面。
+
+   因为如果先安装锐速，可能会造成其它一键包的某个模块下载失败，进而导致安装失败，原因未知。
+
+
+锐速一键安装：
+
+
+连接VPS服务器，运行如下命令：
+
+
+wget -N --no-check-certificate https://github.com/91yun/serverspeeder/raw/master/serverspeeder-v.sh && bash serverspeeder-v.sh Debian 8 3.16.0-4-amd64 x64 3.10.61.0 serverspeeder_31604
+
+
+wget -N --no-check-certificate https://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh && bash serverspeeder.sh
+
+
+
+重启锐速：
+/serverspeeder/bin/serverSpeeder.sh restart
+
+锐速状态：
+/serverspeeder/bin/serverSpeeder.sh status
+
+卸载锐速：
+chattr -i /serverspeeder/etc/apx* && /serverspeeder/bin/serverSpeeder.sh uninstall -f
+
+
+
+锐速参数优化
+
+
+
+锐速的安装目录位于/serverspeeder/
+
+
+锐速参数文件位置：/serverspeeder/etc/config
+
+config文件中的可调整参数很多，可以用Winscp软件打开，部分内容如下：
+
+
+accif="eth0"
+acc="1"
+advacc="1"
+advinacc="1"
+wankbps="10000000"
+waninkbps="10000000"
+csvmode="0"
+highcsv="0"
+subnetAcc="0"
+maxmode="1"
+maxTxMinSsThresh="1048575"
+maxTxEffectiveMS="0"
+maxAccFlowTxKbps="0"
+pcapEnable="0"
+bypassOverFlows="1"
+initialCwndWan="22"
+l2wQLimit="256 2048"
+w2lQLimit="256 2048"
+
+
+我们主要调整如下三个位置，经站长测试，调整后加速效果已经足够使用，其它非主要参数懒得去改：
+
+wankbps="10000000" 
+waninkbps="10000000"
+initialCwndWan="22"
+
+
+
+其中前两个参数为上、下行带宽，默认为10Gbps，一般我们减去一个0，改为1Gbps。
+
+第三个参数代表延迟，为服务器ping值除以2.5后的数值，这个值大家各自不同。比如延迟200ms，那么200除以2.5等于80，那么将22改为80。
+
+以上参数修改完成后保存，然后运行如下命令重启锐速，使设置生效：
+
+
+/serverspeeder/bin/serverSpeeder.sh restart
+
+
+
+
+
+
+
+
+又一个安装命令？
+
+wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+
+
+根据自己需求操作，重启后再使用./tcp.sh命令接着操作。
+
+
+重启VPS命令 reboot
+
+
+
+
